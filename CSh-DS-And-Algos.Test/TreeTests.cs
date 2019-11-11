@@ -119,6 +119,25 @@ namespace CSh_DS_And_Algos.Test
         }
 
         [Fact]
+        public void IsComplete()
+        {
+            //Arrange
+            var tree = GetTree();
+            var tree2 = GetTree2();
+            var tree3 = GetTree3();
+
+            //Act
+            var isComplete = tree.IsComplete;
+            var isComplete2 = tree2.IsComplete;
+            var isComplete3 = tree3.IsComplete;
+
+            //Assert
+            Assert.False(isComplete);
+            Assert.True(isComplete2);
+            Assert.False(isComplete3);
+        }
+
+        [Fact]
         public void Height()
         {
             //Arrange

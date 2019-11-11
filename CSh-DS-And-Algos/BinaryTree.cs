@@ -36,6 +36,57 @@ namespace CSh_DS_And_Algos
             }
         }
 
+        public bool IsComplete
+        {
+            get
+            {
+                if (Root == null)
+                {
+                    return true;
+                }
+
+                var curr = Root;
+                var q = new Queue<TreeNode<T>>();
+                bool seenNonFullNode = false;
+                q.Enqueue(curr);
+
+                while (q.Count > 0)
+                {
+                    curr = q.Dequeue();
+
+                    if (curr.Left != null)
+                    {
+                        if (seenNonFullNode)
+                        {
+                            return false;
+                        }
+
+                        q.Enqueue(curr.Left);
+                    }
+                    else
+                    {
+                        seenNonFullNode = true;
+                    }
+
+                    if (curr.Right != null)
+                    {
+                        if (seenNonFullNode)
+                        {
+                            return false;
+                        }
+                        
+                        q.Enqueue(curr.Right);
+                    }
+                    else
+                    {
+                        seenNonFullNode = true;
+                    }
+                }
+
+                return true;
+            }
+        }
+
         public int Height
         {
             get
