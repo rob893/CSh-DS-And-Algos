@@ -4,7 +4,7 @@ using System.Linq;
 using CSh_DS_And_Algos;
 using Xunit;
 
-namespace test
+namespace CSh_DS_And_Algos.Test
 {
     public class ChessTests
     {

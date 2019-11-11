@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\CSh-DS-And-Algos.csproj" />
+    <ProjectReference Include="..\CSh-DS-And-Algos\CSh-DS-And-Algos.csproj" />
   </ItemGroup>
 
 </Project>
