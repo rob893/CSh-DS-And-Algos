@@ -59,6 +59,27 @@ namespace CSh_DS_And_Algos.Test
             return tree;
         }
 
+        /// <summary>
+        ///    5
+        ///   / 
+        ///  3   
+        /// / 
+        ///2
+        /// </summary>
+        private BinaryTree<int> GetTree3()
+        {
+            var root = new TreeNode<int>(5);
+            var left = new TreeNode<int>(3);
+            var lLeft = new TreeNode<int>(2);
+
+            root.Left = left;
+            left.Left = lLeft;
+
+            var tree = new BinaryTree<int>(root);
+
+            return tree;
+        }
+
         [Fact]
         public void IsBST()
         {
@@ -76,6 +97,25 @@ namespace CSh_DS_And_Algos.Test
             Assert.True(isBST);
             Assert.True(isBST2);
             Assert.False(isBST3);
+        }
+
+        [Fact]
+        public void IsBalanced()
+        {
+            //Arrange
+            var tree = GetTree();
+            var tree2 = GetTree2();
+            var tree3 = GetTree3();
+
+            //Act
+            var isBalanced = tree.IsBalanced;
+            var isBalanced2 = tree2.IsBalanced;
+            var isBalanced3 = tree3.IsBalanced;
+
+            //Assert
+            Assert.True(isBalanced);
+            Assert.True(isBalanced2);
+            Assert.False(isBalanced3);
         }
 
         [Fact]

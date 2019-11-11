@@ -26,6 +26,16 @@ namespace CSh_DS_And_Algos
             }
         }
 
+        public bool IsBalanced
+        {
+            get
+            {
+                var diff = HeightHelper(Root.Left) - HeightHelper(Root.Right);
+
+                return Math.Abs(diff) <= 1;
+            }
+        }
+
         public int Height
         {
             get
@@ -133,21 +143,21 @@ namespace CSh_DS_And_Algos
         public List<T> InOrderTraversalRec()
         {
             var results = new List<T>();
-            InOrderTraversalRecHelper(Root, results);
+            InOrderTraversalRec(Root, results);
 
             return results;
         }
 
-        private void InOrderTraversalRecHelper(TreeNode<T> node, List<T> results)
+        private void InOrderTraversalRec(TreeNode<T> node, List<T> results)
         {
             if (node == null)
             {
                 return;
             }
 
-            InOrderTraversalRecHelper(node.Left, results);
+            InOrderTraversalRec(node.Left, results);
             results.Add(node.Data);
-            InOrderTraversalRecHelper(node.Right, results);
+            InOrderTraversalRec(node.Right, results);
         }
 
         public List<T> PreOrderTraversalIt() //Root, left, right
@@ -184,12 +194,12 @@ namespace CSh_DS_And_Algos
         {
             var results = new List<T>();
 
-            PreOrderTraversalRecHelper(Root, results);
+            PreOrderTraversalRec(Root, results);
 
             return results;
         }
 
-        private void PreOrderTraversalRecHelper(TreeNode<T> root, List<T> results)
+        private void PreOrderTraversalRec(TreeNode<T> root, List<T> results)
         {
             if (root == null)
             {
@@ -197,8 +207,8 @@ namespace CSh_DS_And_Algos
             }
 
             results.Add(root.Data);
-            PreOrderTraversalRecHelper(root.Left, results);
-            PreOrderTraversalRecHelper(root.Right, results);
+            PreOrderTraversalRec(root.Left, results);
+            PreOrderTraversalRec(root.Right, results);
         }
 
         public List<T> PostOrderTraversalIt() //Left, right, root
@@ -250,20 +260,20 @@ namespace CSh_DS_And_Algos
         {
             var results = new List<T>();
 
-            PostOrderTraversalRecHelper(Root, results);
+            PostOrderTraversalRec(Root, results);
 
             return results;
         }
 
-        private void PostOrderTraversalRecHelper(TreeNode<T> root, List<T> results)
+        private void PostOrderTraversalRec(TreeNode<T> root, List<T> results)
         {
             if (root == null)
             {
                 return;
             }
 
-            PostOrderTraversalRecHelper(root.Left, results);
-            PostOrderTraversalRecHelper(root.Right, results);
+            PostOrderTraversalRec(root.Left, results);
+            PostOrderTraversalRec(root.Right, results);
             results.Add(root.Data);
         }
 
@@ -317,12 +327,12 @@ namespace CSh_DS_And_Algos
         {
             var results = new List<T>();
 
-            GetLevelHelper(level, Root, results);
+            GetLevel(level, Root, results);
 
             return results;
         }
 
-        private void GetLevelHelper(int level, TreeNode<T> root, List<T> results)
+        private void GetLevel(int level, TreeNode<T> root, List<T> results)
         {
             if (root == null)
             {
@@ -335,8 +345,8 @@ namespace CSh_DS_And_Algos
             }
             else if (level > 1)
             {
-                GetLevelHelper(level - 1, root.Left, results);
-                GetLevelHelper(level - 1, root.Right, results);
+                GetLevel(level - 1, root.Left, results);
+                GetLevel(level - 1, root.Right, results);
             }
         }
     }
