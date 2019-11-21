@@ -32,6 +32,14 @@ namespace CSh_DS_And_Algos
             return results;
         }
 
+        public static string ReverseString(string str)
+        {
+            var arr = str.ToCharArray();
+            arr.Reverse();
+
+            return new String(arr);
+        }
+
         public static void RemoveDuplicates3(int[] arr)
         {
             var set = new HashSet<int>();
