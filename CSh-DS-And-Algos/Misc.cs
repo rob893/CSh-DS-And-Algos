@@ -6,6 +6,35 @@ namespace CSh_DS_And_Algos
 {
     public static class Misc
     {
+        public static int FindMissingNumber(int[] nums)
+        {
+            long actualSum = 0;
+            long targetSum = 0;
+            int min = int.MaxValue;
+            int max = int.MinValue;
+
+            foreach (var num in nums)
+            {
+                actualSum += num;
+                if (num < min)
+                {
+                    min = num;
+                }
+
+                if (num > max)
+                {
+                    max = num;
+                }
+            }
+
+            for (long i = min; i <= max; i++)
+            {
+                targetSum += i;
+            }
+
+            return (int)(targetSum - actualSum);
+        }
+
         public static int[] RemoveDuplicates1(int[] arr)
         {
             return new HashSet<int>(arr).ToArray();
